@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Task Manager</title>
+    <link rel="stylesheet" href="/styles.css" />
+  </head>
+  <body>
+    <main class="page">
+      <header class="hero">
+        <p class="eyebrow">Node.js Internship Assignment</p>
+        <h1>Task Manager</h1>
+        <p>Create, update, complete, and organize your tasks with SQLite persistence.</p>
+      </header>
+
+      <section class="panel">
+        <h2>Add Task</h2>
+        <form id="task-form" class="task-form">
+          <input id="title" type="text" placeholder="Task title" required />
+          <textarea id="description" rows="3" placeholder="Task description"></textarea>
+          <div class="grid">
+            <input id="dueDate" type="date" />
+            <input id="category" type="text" placeholder="Category" />
+          </div>
+          <button type="submit" id="submit-btn">Create Task</button>
+          <button type="button" id="cancel-edit-btn" class="secondary hidden">Cancel Edit</button>
+        </form>
+        <p id="feedback" class="feedback" aria-live="polite"></p>
+      </section>
+
+      <section class="panel">
+        <div class="list-header">
+          <h2>All Tasks</h2>
+          <button id="refresh-btn" class="secondary" type="button">Refresh</button>
+        </div>
+        <div id="task-list" class="task-list"></div>
+      </section>
+    </main>
+
+    <script src="/app.js"></script>
+  </body>
+</html>

@@ -1,0 +1,28 @@
+{
+  "name": "task-manager-assignment",
+  "version": "1.0.0",
+  "description": "Node.js internship task manager assignment built with Express and SQLite.",
+  "main": "src/server.js",
+  "scripts": {
+    "start": "node src/server.js",
+    "dev": "node --watch src/server.js",
+    "test": "jest --runInBand"
+  },
+  "keywords": [
+    "nodejs",
+    "express",
+    "sqlite",
+    "task-manager"
+  ],
+  "author": "",
+  "license": "MIT",
+  "dependencies": {
+    "dotenv": "^16.4.7",
+    "express": "^4.21.2",
+    "mongoose": "^8.13.2"
+  },
+  "devDependencies": {
+    "jest": "^29.7.0",
+    "supertest": "^7.0.0"
+  }
+}
