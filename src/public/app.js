@@ -173,7 +173,7 @@ taskList.addEventListener("click", async (event) => {
     return;
   }
 
-  const id = Number(button.dataset.id);
+  const id = button.dataset.id;
 
   if (button.dataset.action === "edit") {
     const task = cachedTasks.find((item) => item.id === id);
