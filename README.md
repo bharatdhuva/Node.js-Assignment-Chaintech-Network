@@ -27,7 +27,7 @@ It includes:
 
 ## Live Deployment
 
-[![Live App](https://img.shields.io/badge/View-Live%20Deployment-22c55e?style=for-the-badge)](https://node-js-assignment-chaintech-network-1.onrender.com/)
+[![Live App](https://img.shields.io/badge/View-Live%20Deployment-22c55e?style=for-the-badge)](https://task-manager-assignment-3w3r.onrender.com/)
 
 ---
 
