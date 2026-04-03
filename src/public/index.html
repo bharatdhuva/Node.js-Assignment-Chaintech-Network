@@ -4,6 +4,12 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Task Manager</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Manrope:wght@500;700;800&display=swap"
+      rel="stylesheet"
+    />
     <link rel="stylesheet" href="/styles.css" />
   </head>
   <body>
@@ -11,7 +17,7 @@
       <header class="hero">
         <p class="eyebrow">Node.js Internship Assignment</p>
         <h1>Task Manager</h1>
-        <p>Create, update, complete, and organize your tasks with MongoDB persistence.</p>
+        <p>Plan better, finish faster. Your tasks are stored with MongoDB persistence.</p>
       </header>
 
       <section class="panel">
@@ -33,6 +39,20 @@
         <div class="list-header">
           <h2>All Tasks</h2>
           <button id="refresh-btn" class="secondary" type="button">Refresh</button>
+        </div>
+        <div class="stats" id="task-stats">
+          <div class="stat-card">
+            <span class="stat-label">Total</span>
+            <strong id="total-count">0</strong>
+          </div>
+          <div class="stat-card">
+            <span class="stat-label">Pending</span>
+            <strong id="pending-count">0</strong>
+          </div>
+          <div class="stat-card">
+            <span class="stat-label">Completed</span>
+            <strong id="completed-count">0</strong>
+          </div>
         </div>
         <div id="task-list" class="task-list"></div>
       </section>

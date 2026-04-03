@@ -111,6 +111,25 @@ describe("Task routes", () => {
     expect(response.body.message).toBe("Task title is required.");
   });
 
+  test("rejects invalid due date format", async () => {
+    const response = await request(app)
+      .post("/api/tasks")
+      .send({ title: "Task with bad date", dueDate: "04-10-2026" })
+      .expect(400);
+
+    expect(response.body.success).toBe(false);
+    expect(response.body.message).toBe("Due date must use YYYY-MM-DD format.");
+  });
+
+  test("rejects invalid ObjectId in route params", async () => {
+    const response = await request(app)
+      .delete("/api/tasks/not-a-valid-id")
+      .expect(400);
+
+    expect(response.body.success).toBe(false);
+    expect(response.body.message).toBe("Task id must be a valid MongoDB ObjectId.");
+  });
+
   test("updates a task", async () => {
     const created = await request(app)
       .post("/api/tasks")

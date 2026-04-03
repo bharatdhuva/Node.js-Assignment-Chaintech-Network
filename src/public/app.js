@@ -8,6 +8,9 @@ const taskList = document.getElementById("task-list");
 const submitBtn = document.getElementById("submit-btn");
 const cancelEditBtn = document.getElementById("cancel-edit-btn");
 const refreshBtn = document.getElementById("refresh-btn");
+const totalCount = document.getElementById("total-count");
+const pendingCount = document.getElementById("pending-count");
+const completedCount = document.getElementById("completed-count");
 
 let editingTaskId = null;
 let cachedTasks = [];
@@ -23,7 +26,13 @@ function escapeHtml(value) {
 
 function showFeedback(message, isError = true) {
   feedback.textContent = message;
-  feedback.style.color = isError ? "#b91c1c" : "#15803d";
+  feedback.classList.remove("error", "success");
+
+  if (!message) {
+    return;
+  }
+
+  feedback.classList.add(isError ? "error" : "success");
 }
 
 function resetForm() {
@@ -41,7 +50,14 @@ async function requestJson(url, options = {}) {
     ...options
   });
 
-  const data = await response.json();
+  const rawBody = await response.text();
+  let data;
+
+  try {
+    data = rawBody ? JSON.parse(rawBody) : {};
+  } catch {
+    data = {};
+  }
 
   if (!response.ok) {
     throw new Error(data.message || "Request failed.");
@@ -50,11 +66,22 @@ async function requestJson(url, options = {}) {
   return data;
 }
 
+function updateSummary(tasks) {
+  const total = tasks.length;
+  const completed = tasks.filter((task) => task.completed).length;
+  const pending = total - completed;
+
+  totalCount.textContent = String(total);
+  pendingCount.textContent = String(pending);
+  completedCount.textContent = String(completed);
+}
+
 function renderTasks(tasks) {
   cachedTasks = tasks;
+  updateSummary(tasks);
 
   if (!tasks.length) {
-    taskList.innerHTML = "<p>No tasks found. Create your first task above.</p>";
+    taskList.innerHTML = "<p class=\"empty-state\">No tasks found. Create your first task above.</p>";
     return;
   }
 
